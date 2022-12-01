@@ -10,7 +10,7 @@ class Product extends Model {}
 Product.init(
   {
     // define columns
-    product_id: {
+    id: {
       type: DataTypes.INTERGER,
       allowNull: false,
       primaryKey: true,
@@ -31,9 +31,16 @@ Product.init(
       type: DataTypes.INTERGER,
       allowNull: false,
       validate: {
-        len: [10],
+        defaultValue: 10,
       },
     },
+    category_id: {
+      type: DataTypes.INTERGER,
+      refrences: {
+        model: 'category',
+        key: 'id',
+      }
+    }
   },
   {
     sequelize,
